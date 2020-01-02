@@ -69,6 +69,9 @@ void exec_monty(stack_t **stack, char *opcode, int ln)
 		{"swap", exec_swap},
 		{"nop", exec_nop},
 		{"pchar", exec_pchar},
+		{"add", exec_add},
+		{"sub", exec_sub},
+		{"mul", exec_mul},
 		{"div", exec_div},
 		{"mod", exec_mod},
 		{NULL, NULL}
