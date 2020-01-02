@@ -42,7 +42,7 @@ void open_and_read(char *f)
     val = strtok(NULL, " \n");
     if (val != NULL && strcmp(op, "push") == 0)
     {
-
+        
     }
     exec_monty(&stack, op);
     ln++;
