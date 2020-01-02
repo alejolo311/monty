@@ -44,15 +44,14 @@ void open_and_read(char *f)
     {
         
     }
-    exec_monty(&stack, op);
+    exec_monty(&stack, op, ln);
     ln++;
     }    
 }
 
-void exec_monty(stack_t **stack, char *opcode)
+void exec_monty(stack_t **stack, char *opcode, int ln)
 {   
     int i;
-	char *op;
 	instruction_t instructions[] = {
 		{"pall", exec_pall},
 		{"pint", exec_pint},
@@ -61,5 +60,14 @@ void exec_monty(stack_t **stack, char *opcode)
         {"nop", exec_nop},
 		{NULL, NULL}
 	};
+	for (i = 0; instructions[i].opcode; i++)
+		if (strcmp(opcode, instructions[i].opcode) == 0)
+		{
+			instructions[i].f(stack, ln);
+			return;
+		}
+	dprintf(STDERR_FILENO, "L%d: ", ln);
+	dprintf(STDERR_FILENO, "unknown instruction %s\n", opcode);
+	exit(EXIT_FAILURE);
 
 }

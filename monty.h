@@ -40,6 +40,6 @@ typedef struct instruction_s
 /* helpers */
 int verify_args(int argc);
 void open_and_read(char *f);
-void exec_monty(stack_t **stack, char *opcode);
+void exec_monty(stack_t **stack, char *opcode, int ln);
 
 #endif
