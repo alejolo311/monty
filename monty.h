@@ -55,6 +55,9 @@ void exec_pchar(stack_t **stack, unsigned int line_number);
 
 /* Aritmetic Instructions */
 void exec_div(stack_t **stack, unsigned int line_number);
+void exec_add(stack_t **stack, unsigned int line_number);
+void exec_sub(stack_t **stack, unsigned int line_number);
+void exec_mul(stack_t **stack, unsigned int line_number);
 
 /* Nodes Managemens */
 
