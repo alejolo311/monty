@@ -7,8 +7,7 @@
  */
 void exec_div(stack_t **stack, unsigned int line_number)
 {
-	stack_t *actual = *stack;
-	stack_t *next;
+	stack_t *actual = *stack, *next;
 
 	if (actual == NULL || actual->next == NULL)
 	{

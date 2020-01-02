@@ -1,8 +1,9 @@
 #include "monty.h"
 /**
- * pchar_list - prints the char at the top of the stack, followed by a new line
- * @stack: pointer to the head of the list
- * @line_number: line number of instruction
+ * exec_pchar - this function executes the pchar opcode
+ * @stack: the stack to read the numbers
+ * @line_number: number of line that is executed
+ * Return: void function
  */
 void exec_pchar(stack_t **stack, unsigned int line_number)
 {
