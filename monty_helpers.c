@@ -56,6 +56,7 @@ void open_and_read(char *f)
  * exec_monty - execute the opcode funcion
  * @stack: head of the stack
  * @opcode: opcode instruction
+ * @ln: number of line
  */
 void exec_monty(stack_t **stack, char *opcode, int ln)
 {
