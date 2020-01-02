@@ -42,8 +42,8 @@ void open_and_read(char *f)
 		val = strtok(NULL, " \n");
 		if (val != NULL && strcmp(op, "push") == 0)
 		{
-
-		}
+            
+		}  
 		exec_monty(&stack, op, ln);
 		ln++;
 	}
@@ -74,5 +74,4 @@ void exec_monty(stack_t **stack, char *opcode, int ln)
 	dprintf(STDERR_FILENO, "L%d: ", ln);
 	dprintf(STDERR_FILENO, "unknown instruction %s\n", opcode);
 	exit(EXIT_FAILURE);
-
 }
