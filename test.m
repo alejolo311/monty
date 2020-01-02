@@ -1,3 +1,2 @@
-push 10
-pall
-mul
+push -1
+pchar

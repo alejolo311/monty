@@ -9,17 +9,9 @@ void exec_pchar(stack_t **stack, unsigned int line_number)
 {
 	stack_t *actual = *stack;
 
-	if (actual == NULL)
-	{
-		dprintf(STDERR_FILENO, "L%u: can't pchar, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-	if (actual->n < 0 || actual->n > 127)
-	{
-		dprintf(STDERR_FILENO, "L%u: can't pchar, ", line_number);
-		dprintf(STDERR_FILENO, "value out of range\n");
-		exit(EXIT_FAILURE);
-	}
+	actual == NULL ? error_handler("pchar", -98, line_number) : (void) actual;
+	actual->n < 0 || actual->n > 127 ?
+	error_handler("pchar", -127, line_number) : (void)actual;
 	putchar(actual->n);
 	putchar('\n');
 }

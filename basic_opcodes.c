@@ -44,11 +44,7 @@ void exec_pint(stack_t **stack, unsigned int line_number)
 {
 	stack_t *actual = *stack;
 
-	if (actual == NULL)
-	{
-		dprintf(STDERR_FILENO, "L%u: can't pint, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
-	}
+	actual == NULL ? error_handler("pint", -98, line_number) : (void) actual;
 	printf("%d\n", actual->n);
 }
 /**
@@ -61,14 +57,8 @@ void exec_pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = *stack;
 
-	if (!tmp)
-	{
-		dprintf(STDERR_FILENO, "L%u: can't pop an empty stack\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-
+	tmp == NULL ? error_handler("pop", -98, line_number) : (void) tmp;
 	*stack = tmp->next;
-
 	if (tmp->next)
 		tmp->next->prev = NULL;
 
@@ -85,11 +75,7 @@ void exec_swap(stack_t **stack, unsigned int line_number)
 	int aux;
 	stack_t *actual = *stack, *next;
 
-	if (actual == NULL || actual->next == NULL)
-	{
-		dprintf(STDERR_FILENO, "L%u: can't swap, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
-	}
+	actual == NULL ? error_handler("swap", -99, line_number) : (void) actual;
 	next = actual->next;
 	aux = actual->n;
 	actual->n = next->n;
