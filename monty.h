@@ -52,6 +52,7 @@ void exec_nop(stack_t **stack, unsigned int line_number);
 
 /* String Instructions */
 void exec_pchar(stack_t **stack, unsigned int line_number);
+void exec_pstr(stack_t **stack, unsigned int line_number);
 
 /* Aritmetic Instructions */
 void exec_div(stack_t **stack, unsigned int line_number);
