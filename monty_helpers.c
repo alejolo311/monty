@@ -13,7 +13,7 @@ int verify_args(int argc)
 		dprintf(STDERR_FILENO, "USAGE: monty file\n");
 		return (-1);
 	}
-    return (1);
+	return (1);
 }
 
 /**
@@ -25,39 +25,44 @@ void open_and_read(char *f)
 {
 	size_t l = 0;
 	ssize_t r;
-    unsigned int ln = 1;
+	unsigned int ln = 1;
 	char *op, *line, *val;
-    FILE *montyfile;
-    stack_t *stack;
+	FILE *montyfile;
+	stack_t *stack;
 
-    montyfile = fopen(f, "r");
-    while ((r = getline(&line, &l, montyfile)) != -1)
-    {
-    op = strtok(line, " ");
-    if (*op == '#' || *op == '\n')
-	    {
+	montyfile = fopen(f, "r");
+	while ((r = getline(&line, &l, montyfile)) != -1)
+	{
+		op = strtok(line, " ");
+		if (*op == '#' || *op == '\n')
+		{
 			ln++;
 			continue;
 		}
-    val = strtok(NULL, " \n");
-    if (val != NULL && strcmp(op, "push") == 0)
-    {
-        
-    }
-    exec_monty(&stack, op, ln);
-    ln++;
-    }    
-}
+		val = strtok(NULL, " \n");
+		if (val != NULL && strcmp(op, "push") == 0)
+		{
 
+		}
+		exec_monty(&stack, op, ln);
+		ln++;
+	}
+}
+/**
+ * exec_monty - execute the opcode funcion
+ * @stack: head of the stack
+ * @opcode: opcode instruction
+ */
 void exec_monty(stack_t **stack, char *opcode, int ln)
-{   
-    int i;
+{
+	int i;
+	char *op;
 	instruction_t instructions[] = {
 		{"pall", exec_pall},
 		{"pint", exec_pint},
 		{"pop", exec_pop},
 		{"swap", exec_swap},
-        {"nop", exec_nop},
+		{"nop", exec_nop},
 		{NULL, NULL}
 	};
 	for (i = 0; instructions[i].opcode; i++)
