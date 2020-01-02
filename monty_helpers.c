@@ -26,30 +26,40 @@ void open_and_read(char *f)
 	size_t l = 0;
 	ssize_t r;
     unsigned int ln = 1;
-    int i = 0;
-	char *op, *line, *token, **tokens, *val;
+	char *op, *line, *val;
     FILE *montyfile;
-
-    tokens = malloc(sizeof(char *) * 64);
+    stack_t *stack;
 
     montyfile = fopen(f, "r");
-    do {
-    r = getline(&line, &l, montyfile);
-    token = strtok(line, " \t\r\n\a");
-    while (token)
+    while ((r = getline(&line, &l, montyfile)) != -1)
     {
-        tokens[i] = token;
-        i++;
-        token = strtok(NULL, " \t\r\n\a");
-    }
-    op = tokens[0];
-    val = tokens[1];
+    op = strtok(line, " ");
     if (*op == '#' || *op == '\n')
 	    {
 			ln++;
 			continue;
 		}
-    printf("opcode -> (%s) value -> (%s)\n", op, val);
+    val = strtok(NULL, " \n");
+    if (val != NULL && strcmp(op, "push") == 0)
+    {
+
+    }
+    exec_monty(&stack, op);
     ln++;
-    } while (r != -1);
+    }    
+}
+
+void exec_monty(stack_t **stack, char *opcode)
+{   
+    int i;
+	char *op;
+	instruction_t instructions[] = {
+		{"pall", exec_pall},
+		{"pint", exec_pint},
+		{"pop", exec_pop},
+		{"swap", exec_swap},
+        {"nop", exec_nop},
+		{NULL, NULL}
+	};
+
 }
