@@ -49,7 +49,12 @@ void exec_pop(stack_t **stack, unsigned int line_number);
 void exec_pint(stack_t **stack, unsigned int line_number);
 void exec_swap(stack_t **stack, unsigned int line_number);
 void exec_nop(stack_t **stack, unsigned int line_number);
+
+/* String Instructions */
 void exec_pchar(stack_t **stack, unsigned int line_number);
+
+/* Aritmetic Instructions */
+void exec_div(stack_t **stack, unsigned int line_number);
 
 /* Nodes Managemens */
 
