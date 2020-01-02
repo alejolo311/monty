@@ -61,10 +61,15 @@ void exec_add(stack_t **stack, unsigned int line_number);
 void exec_sub(stack_t **stack, unsigned int line_number);
 void exec_mul(stack_t **stack, unsigned int line_number);
 
+/* Rotations Instructions*/
+void exec_rotl(stack_t **stack, unsigned int line_number);
+
 
 /* Errors managements */
 
 void error_handler(char *opcode, int errorcode, int ln);
+
+
 
 /* Nodes Managements */
 
