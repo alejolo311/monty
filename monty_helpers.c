@@ -26,19 +26,30 @@ void open_and_read(char *f)
 	size_t l = 0;
 	ssize_t r;
     unsigned int ln = 1;
-	char *op, *line;
+    int i = 0;
+	char *op, *line, *token, **tokens, *val;
     FILE *montyfile;
+
+    tokens = malloc(sizeof(char *) * 64);
 
     montyfile = fopen(f, "r");
     do {
     r = getline(&line, &l, montyfile);
-    op = strtok(line, " ");
+    token = strtok(line, " \t\r\n\a");
+    while (token)
+    {
+        tokens[i] = token;
+        i++;
+        token = strtok(NULL, " \t\r\n\a");
+    }
+    op = tokens[0];
+    val = tokens[1];
     if (*op == '#' || *op == '\n')
 	    {
 			ln++;
 			continue;
 		}
-    printf("%s\n", op);
+    printf("opcode -> (%s) value -> (%s)\n", op, val);
     ln++;
     } while (r != -1);
 }
