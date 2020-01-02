@@ -76,6 +76,7 @@ void exec_monty(stack_t **stack, char *opcode, int ln)
 		{"div", exec_div},
 		{"mod", exec_mod},
 		{"rotl", exec_rotl},
+		{"rotr", exec_rotr},
 		{NULL, NULL}
 	};
 	op = strtok(opcode, " \n");

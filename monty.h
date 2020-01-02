@@ -63,7 +63,7 @@ void exec_mul(stack_t **stack, unsigned int line_number);
 
 /* Rotations Instructions*/
 void exec_rotl(stack_t **stack, unsigned int line_number);
-
+void exec_rotr(stack_t **stack, unsigned int line_number);
 
 /* Errors managements */
 
