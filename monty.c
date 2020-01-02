@@ -7,8 +7,10 @@
  * Return: 0 on success
  */
 int main(int argc, char **argv)
-{
-    (void) argc;
-    (void) argv;
+{ 
+    if (verify_args(argc) == 1)
+        open_and_read(*(argv + 1));
+    else
+        exit(EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
