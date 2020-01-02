@@ -70,6 +70,7 @@ void exec_monty(stack_t **stack, char *opcode, int ln)
 		{"nop", exec_nop},
 		{"pchar", exec_pchar},
 		{"div", exec_div},
+		{"mod", exec_mod},
 		{NULL, NULL}
 	};
 	op = strtok(opcode, " \n");

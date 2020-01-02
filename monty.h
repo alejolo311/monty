@@ -55,8 +55,14 @@ void exec_pchar(stack_t **stack, unsigned int line_number);
 
 /* Aritmetic Instructions */
 void exec_div(stack_t **stack, unsigned int line_number);
+void exec_mod(stack_t **stack, unsigned int line_number);
 
-/* Nodes Managemens */
+
+/* Errors managements */
+
+void error_handler(char *opcode, int errorcode, int ln);
+
+/* Nodes Managements */
 
 stack_t *add_dnodeint(stack_t **head, const int n);
 #endif
