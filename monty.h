@@ -41,5 +41,5 @@ typedef struct instruction_s
 int verify_args(int argc);
 void open_and_read(char *f);
 void exec_monty(stack_t **stack, char *opcode, int ln);
-
+stack_t *add_dnodeint(stack_t **head, const int n);
 #endif

@@ -28,7 +28,7 @@ void open_and_read(char *f)
 	unsigned int ln = 1;
 	char *op, *line, *val;
 	FILE *montyfile;
-	stack_t *stack;
+	stack_t *head;
 
 	montyfile = fopen(f, "r");
 	while ((r = getline(&line, &l, montyfile)) != -1)
@@ -42,10 +42,12 @@ void open_and_read(char *f)
 		val = strtok(NULL, " \n");
 		if (val != NULL && strcmp(op, "push") == 0)
 		{
-
+			head = add_dnodeint(&head, val);
+		} else
+		{
+			exec_monty(&head, op, ln);
 		}
-		exec_monty(&stack, op, ln);
-		ln++;
+			ln++;
 	}
 }
 /**
