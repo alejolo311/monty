@@ -7,6 +7,11 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
+
+/* Global Variables */
+
+_Bool queue;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -69,9 +74,13 @@ void exec_rotr(stack_t **stack, unsigned int line_number);
 
 void error_handler(char *opcode, int errorcode, int ln);
 
+/* FIFO AND LIFO */
+void exec_stack(stack_t **stack, unsigned int line_number);
+void exec_queue(stack_t **stack, unsigned int line_number);
 
+/* Stack Management */
 
-/* Nodes Managements */
+stack_t *push_stack(stack_t **head, const int n);
+stack_t *push_queue(stack_t **head, const int n);
 
-stack_t *add_dnodeint(stack_t **head, const int n);
 #endif

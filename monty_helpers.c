@@ -29,7 +29,7 @@ void open_and_read(char *f)
 	int value;
 	char *op, *line, *val;
 	FILE *montyfile;
-	stack_t *head;
+	stack_t *head = NULL;
 
 	montyfile = fopen(f, "r");
 	while ((r = getline(&line, &l, montyfile)) != -1)
@@ -44,7 +44,7 @@ void open_and_read(char *f)
 		if (val != NULL && strcmp(op, "push") == 0)
 		{
 			value = atoi(val);
-			head = add_dnodeint(&head, value);
+			!queue ? push_stack(&head, value) : push_queue(&head, value);
 		} else
 		{
 			exec_monty(&head, op, ln);
@@ -77,6 +77,8 @@ void exec_monty(stack_t **stack, char *opcode, int ln)
 		{"mod", exec_mod},
 		{"rotl", exec_rotl},
 		{"rotr", exec_rotr},
+		{"stack", exec_stack},
+		{"queue", exec_queue},
 		{NULL, NULL}
 	};
 	op = strtok(opcode, " \n");
