@@ -20,4 +20,7 @@ void error_handler(char *opcode, int errorcode, int ln)
 	if (errorcode == -127)
 		dprintf(STDERR_FILENO,
 		"L%u: can't %s, value out of range\n", ln, opcode), exit(EXIT_FAILURE);
+	if (errorcode == -128)
+		dprintf(STDERR_FILENO,
+		"L%d: unknown instruction %s\n", ln, opcode), exit(EXIT_FAILURE);
 }

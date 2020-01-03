@@ -88,7 +88,5 @@ void exec_monty(stack_t **stack, char *opcode, int ln)
 			instructions[i].f(stack, ln);
 			return;
 		}
-	dprintf(STDERR_FILENO, "L%d: ", ln);
-	dprintf(STDERR_FILENO, "unknown instruction %s\n", op);
-	exit(EXIT_FAILURE);
+	error_handler(opcode, -128, ln);
 }
