@@ -12,8 +12,7 @@ stack_t *push_stack(stack_t **head, const int n)
 	new = malloc(sizeof(stack_t));
 
 	if (!new)
-		return (NULL);
-
+		error_handler("malloc", -97, 0);
 	new->n = n;
 	new->prev = NULL;
 	new->next = NULL;
@@ -46,7 +45,7 @@ stack_t *push_queue(stack_t **head, const int n)
 	actual = *head;
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
-		return (NULL);
+		error_handler("malloc", -97, 0);
 	new->next = NULL;
 	new->n = n;
 

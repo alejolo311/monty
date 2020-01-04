@@ -8,6 +8,12 @@
  */
 void error_handler(char *op, int errorcode, int ln)
 {
+	if (errorcode == -97)
+	{
+		dprintf(STDERR_FILENO,"Error: %s failed\n", op);
+		clean();
+		exit(EXIT_FAILURE);
+	}
 	if (errorcode == -98)
 	{
 		dprintf(STDERR_FILENO,"L%u: can't %s, stack empty\n", ln, op);
@@ -27,4 +33,11 @@ void error_handler(char *op, int errorcode, int ln)
 	if (errorcode == -128)
 		dprintf(STDERR_FILENO,
 		"L%d: unknown instruction %s\n", ln, op), clean(), exit(EXIT_FAILURE);
+	if (errorcode == -129)
+	{
+		dprintf(STDERR_FILENO,"L%d: usage: push integer\n", ln);
+		clean();
+		exit(EXIT_FAILURE);
+	}
+	
 }

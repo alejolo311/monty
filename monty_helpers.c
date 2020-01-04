@@ -26,7 +26,7 @@ void open_and_read(char *f)
 	ssize_t r;
 	unsigned int ln = 1;
 	int value;
-	char *op,*val;
+	char *op,*val, *opcode;
 
 	settings.file = fopen(f, "r");
 	while ((r = getline(&settings.line, &l, settings.file)) != -1)
@@ -38,20 +38,19 @@ void open_and_read(char *f)
 			continue;
 		}
 		val = strtok(NULL, " \n");
-		if (val != NULL && strcmp(op, "push") == 0)
+		opcode = strtok(op, " \n");
+		if (strcmp(opcode, "push") == 0)
 		{
-			if (is_number(val))
+			if (is_number(val) && val != NULL)
 			{
 				value = atoi(val);
 				!settings.queue ? push_stack(&settings.stack, value) : push_queue(&settings.stack, value);
-			} else
-			{
-				dprintf(STDERR_FILENO,
-				"L%d: usage: push integer\n", ln), exit(EXIT_FAILURE);
-			}
+			} 
+			else
+				error_handler(opcode, -129, ln);
 		} else
 		{
-			exec_monty(&settings.stack, op, ln);
+			exec_monty(&settings.stack, opcode, ln);
 		}
 		ln++;
 	}
