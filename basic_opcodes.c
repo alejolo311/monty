@@ -57,7 +57,7 @@ void exec_pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = *stack;
 
-	tmp == NULL ? error_handler("pop", -98, line_number) : (void) tmp;
+	tmp == NULL ? error_handler("pop", -95, line_number) : (void) tmp;
 	*stack = tmp->next;
 	if (tmp->next)
 		tmp->next->prev = NULL;
