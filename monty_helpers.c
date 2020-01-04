@@ -26,7 +26,7 @@ void open_and_read(char *f)
 	ssize_t r;
 	unsigned int ln = 1;
 	int value;
-	char *op,*val, *opcode;
+	char *op, *val, *opcode;
 
 	settings.file = fopen(f, "r");
 	if (settings.file == NULL)
@@ -46,8 +46,11 @@ void open_and_read(char *f)
 			if (is_number(val) && val != NULL)
 			{
 				value = atoi(val);
-				!settings.queue ? push_stack(&settings.stack, value) : push_queue(&settings.stack, value);
-			} 
+				if (!settings.queue)
+					push_stack(&settings.stack, value);
+				else
+					push_queue(&settings.stack, value);
+			}
 			else
 				error_handler(opcode, -129, ln);
 		} else
@@ -95,7 +98,10 @@ void exec_monty(stack_t **stack, char *opcode, int ln)
 		}
 	error_handler(opcode, -128, ln);
 }
-
+/**
+ * set - set initial values
+ * Return: void
+ */
 void set(void)
 {
 	settings.file = NULL;
@@ -103,7 +109,10 @@ void set(void)
 	settings.stack = NULL;
 	settings.queue = false;
 }
-
+/**
+ * clean - clean men
+ * Return: void
+ */
 void clean(void)
 {
 	fclose(settings.file);
