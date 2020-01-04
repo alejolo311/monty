@@ -43,13 +43,20 @@ void open_and_read(char *f)
 		val = strtok(NULL, " \n");
 		if (val != NULL && strcmp(op, "push") == 0)
 		{
-			value = atoi(val);
-			!queue ? push_stack(&head, value) : push_queue(&head, value);
+			if (is_number(val))
+			{
+				value = atoi(val);
+				!queue ? push_stack(&head, value) : push_queue(&head, value);
+			} else
+			{
+				dprintf(STDERR_FILENO,
+				"L%d: usage: push integer\n", ln), exit(EXIT_FAILURE);
+			}
 		} else
 		{
 			exec_monty(&head, op, ln);
 		}
-			ln++;
+		ln++;
 	}
 }
 /**

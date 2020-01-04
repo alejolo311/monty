@@ -47,6 +47,8 @@ int verify_args(int argc);
 void open_and_read(char *f);
 void exec_monty(stack_t **stack, char *opcode, int ln);
 
+/*Tools*/
+int is_number(char *c);
 
 /* Instructions */
 void exec_pall(stack_t **stack, unsigned int line_number);
