@@ -64,11 +64,15 @@ stack_t *push_queue(stack_t **head, const int n)
 	new->prev = actual;
 	return (new);
 }
+/**
+ * fstack - free the stack
+ * @head: head of the stack
+ * Return: void
+ */
 void fstack(stack_t *head)
 {
 	stack_t *aux, *actual;
-	
-	
+
 	actual = head;
 	while (actual != NULL)
 	{
