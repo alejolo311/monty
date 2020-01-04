@@ -1,7 +1,7 @@
 #include "monty.h"
 /**
  * error_handler - this function executes the div opcode
- * @opcode: opcode generates error
+ * @op: opcode generates error
  * @errorcode: the number of the error
  * @ln: number of line that is executed
  * Return: void function
@@ -10,17 +10,16 @@ void error_handler(char *op, int errorcode, int ln)
 {
 	if (errorcode == -97)
 	{
-		dprintf(STDERR_FILENO,"Error: %s failed\n", op);
+		dprintf(STDERR_FILENO, "Error: %s failed\n", op);
 		clean();
 		exit(EXIT_FAILURE);
 	}
 	if (errorcode == -98)
 	{
-		dprintf(STDERR_FILENO,"L%u: can't %s, stack empty\n", ln, op);
+		dprintf(STDERR_FILENO, "L%u: can't %s, stack empty\n", ln, op);
 		clean();
 		exit(EXIT_FAILURE);
 	}
-		
 	if (errorcode == -99)
 		dprintf(STDERR_FILENO,
 		"L%u: can't %s, stack too short\n", ln, op), clean(), exit(EXIT_FAILURE);
@@ -35,9 +34,8 @@ void error_handler(char *op, int errorcode, int ln)
 		"L%d: unknown instruction %s\n", ln, op), clean(), exit(EXIT_FAILURE);
 	if (errorcode == -129)
 	{
-		dprintf(STDERR_FILENO,"L%d: usage: push integer\n", ln);
+		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", ln);
 		clean();
 		exit(EXIT_FAILURE);
 	}
-	
 }
