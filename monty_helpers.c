@@ -29,6 +29,8 @@ void open_and_read(char *f)
 	char *op,*val, *opcode;
 
 	settings.file = fopen(f, "r");
+	if (settings.file == NULL)
+		error_handler(f, -96, ln);
 	while ((r = getline(&settings.line, &l, settings.file)) != -1)
 	{
 		op = strtok(settings.line, " ");

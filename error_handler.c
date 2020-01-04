@@ -8,6 +8,11 @@
  */
 void error_handler(char *op, int errorcode, int ln)
 {
+	if (errorcode == -96)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", op);
+		exit(EXIT_FAILURE);
+	}
 	if (errorcode == -97)
 	{
 		dprintf(STDERR_FILENO,"Error: %s failed\n", op);
@@ -20,7 +25,6 @@ void error_handler(char *op, int errorcode, int ln)
 		clean();
 		exit(EXIT_FAILURE);
 	}
-		
 	if (errorcode == -99)
 		dprintf(STDERR_FILENO,
 		"L%u: can't %s, stack too short\n", ln, op), clean(), exit(EXIT_FAILURE);
