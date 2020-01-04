@@ -8,6 +8,7 @@
 int is_number(char *c)
 {
 	char *aux = c;
+
 	if (c == NULL)
 		return (0);
 	if (*aux == '-')
