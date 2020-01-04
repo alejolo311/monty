@@ -75,7 +75,8 @@ void exec_swap(stack_t **stack, unsigned int line_number)
 	int aux;
 	stack_t *actual = *stack, *next;
 
-	actual == NULL ? error_handler("swap", -99, line_number) : (void) actual;
+	actual == NULL || actual->next == NULL ?
+	error_handler("swap", -99, line_number) : (void) actual;
 	next = actual->next;
 	aux = actual->n;
 	actual->n = next->n;
