@@ -1,3 +1,4 @@
+#include "monty.h"
 /**
  * is_number - check if the string is a number
  * @c: string
@@ -8,11 +9,13 @@ int is_number(char *c)
 {
 	char *aux = c;
 
-	for (; aux != '\0'; aux++)
+	if (*aux == '-')
+		aux++;
+
+	for (; *aux != '\0'; aux++)
 	{
-		if (*aux < 48 || *aux > 57)
+		if (*aux < '0' || *aux > '9')
 			return (0);
 	}
-
 	return (1);
 }
