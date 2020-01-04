@@ -6,14 +6,13 @@
  * Return: 0 in succes -1 in fail
  */
 
-int verify_args(int argc)
+void verify_args(int argc)
 {
 	if (argc > 2 || argc < 2)
 	{
 		dprintf(STDERR_FILENO, "USAGE: monty file\n");
-		return (-1);
+		exit(EXIT_FAILURE);
 	}
-	return (1);
 }
 
 /**
@@ -27,14 +26,12 @@ void open_and_read(char *f)
 	ssize_t r;
 	unsigned int ln = 1;
 	int value;
-	char *op, *line, *val;
-	FILE *montyfile;
-	stack_t *head = NULL;
+	char *op,*val;
 
-	montyfile = fopen(f, "r");
-	while ((r = getline(&line, &l, montyfile)) != -1)
+	settings.file = fopen(f, "r");
+	while ((r = getline(&settings.line, &l, settings.file)) != -1)
 	{
-		op = strtok(line, " ");
+		op = strtok(settings.line, " ");
 		if (*op == '#' || *op == '\n')
 		{
 			ln++;
@@ -46,7 +43,7 @@ void open_and_read(char *f)
 			if (is_number(val))
 			{
 				value = atoi(val);
-				!queue ? push_stack(&head, value) : push_queue(&head, value);
+				!settings.queue ? push_stack(&settings.stack, value) : push_queue(&settings.stack, value);
 			} else
 			{
 				dprintf(STDERR_FILENO,
@@ -54,7 +51,7 @@ void open_and_read(char *f)
 			}
 		} else
 		{
-			exec_monty(&head, op, ln);
+			exec_monty(&settings.stack, op, ln);
 		}
 		ln++;
 	}
@@ -97,3 +94,19 @@ void exec_monty(stack_t **stack, char *opcode, int ln)
 		}
 	error_handler(opcode, -128, ln);
 }
+
+void set(void)
+{
+	settings.file = NULL;
+	settings.line = NULL;
+	settings.stack = NULL;
+	settings.queue = false;
+}
+
+void clean(void)
+{
+	fclose(settings.file);
+	free(settings.line);
+	fstack(settings.stack);
+}
+

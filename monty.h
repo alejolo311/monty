@@ -9,10 +9,6 @@
 #include <string.h>
 #include <stdbool.h>
 
-/* Global Variables */
-
-_Bool queue;
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -40,12 +36,31 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct settings_s - settings for all the program
+ * @file: file
+ * @line: line
+ * @stack: stack
+ * @queue: false
+ */
+typedef struct settings_s
+{
+	FILE *file;
+	char *line;
+	stack_t *stack;
+	_Bool queue;
+} settings_t;
+
+extern settings_t settings;
+
 
 
 /* helpers */
-int verify_args(int argc);
+void verify_args(int argc);
 void open_and_read(char *f);
 void exec_monty(stack_t **stack, char *opcode, int ln);
+void set(void);
+void clean(void);
 
 /*Tools*/
 int is_number(char *c);
@@ -84,5 +99,6 @@ void exec_queue(stack_t **stack, unsigned int line_number);
 
 stack_t *push_stack(stack_t **head, const int n);
 stack_t *push_queue(stack_t **head, const int n);
+void fstack(stack_t *head);
 
 #endif

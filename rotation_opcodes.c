@@ -58,7 +58,7 @@ void exec_stack(stack_t **stack, unsigned int line_number)
 {
 	(void) stack;
 	(void) line_number;
-	queue = false;
+	settings.queue = false;
 }
 /**
  * exec_queue - this function executes the queue opcode
@@ -70,6 +70,6 @@ void exec_queue(stack_t **stack, unsigned int line_number)
 {
 	(void) stack;
 	(void) line_number;
-	queue = true;
+	settings.queue = true;
 }
 

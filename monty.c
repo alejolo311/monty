@@ -6,12 +6,14 @@
  * Description: entry point for the program to exec monty code
  * Return: 0 on success
  */
+
+settings_t settings;
+
 int main(int argc, char **argv)
 {
-	queue = false;
-	if (verify_args(argc) == 1)
-		open_and_read(*(argv + 1));
-	else
-		exit(EXIT_FAILURE);
+	set();
+	verify_args(argc);
+	open_and_read(*(argv + 1));
+	clean();
 	return (EXIT_SUCCESS);
 }

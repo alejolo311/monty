@@ -65,3 +65,16 @@ stack_t *push_queue(stack_t **head, const int n)
 	new->prev = actual;
 	return (new);
 }
+void fstack(stack_t *head)
+{
+	stack_t *aux, *actual;
+	
+	
+	actual = head;
+	while (actual != NULL)
+	{
+		aux = actual->next;
+		free(actual);
+		actual = aux;
+	}
+}
