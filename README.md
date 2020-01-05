@@ -73,3 +73,13 @@ This repository includes 4 files with Brainfuck implementations.
 - Add two digits given by the user.
 - Multiply two digits given by the user.
 - Multiply two digits given by the user + print a new line at the end.
+
+## How to compile
+
+$ bf ./1001-add.bf
+
+### Requirements
+
+ - compile on Ubuntu 14.04 LTS
+ - compile with bf
+   $ apt-get install bf
