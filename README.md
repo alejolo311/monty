@@ -82,4 +82,6 @@ $ bf ./1001-add.bf
 
  - compile on Ubuntu 14.04 LTS
  - compile with bf
-   $ apt-get install bf
+ ```bash
+ $ apt-get install bf 
+ ```
