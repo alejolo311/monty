@@ -21,3 +21,21 @@ This project was built by Hugo Bayona and Alejo López
 
 - Twitter: [@alejolo311](https://twitter.com/Alejolo311)
 - Github: [@alejolo311](https://github.com/alejolo311)
+
+# Features
+
+The following opcodes are suported.
+
+- (push)  Push an integer to the stack.
+- (pall)  Prints the entire stack.
+- (pint)  Print the first element of the stack.
+- (pop)   Removes the top element of the stack.
+- (swap)  Swaps the top two elements of the stack.
+- (add,   sub, mul, div, mod) Aritmetic op +, -, *, /, %.
+- (nop)
+- (pchar) Prints the char at the top of the stack, followed by a new line.
+- (pstr)  Prints the string starting at the top of the stack, followed by a new line.
+- (rotl)  Rotates the stack to the top.
+- (rotr)  Rotates the stack to the bottom.
+- (stack) Sets the format of the data to a stack (LIFO). DEFAULT.
+- (queue) Sets the format of the data to a queue (FIFO).
