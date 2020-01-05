@@ -39,3 +39,28 @@ The following opcodes are suported.
 - (rotr)  Rotates the stack to the bottom.
 - (stack) Sets the format of the data to a stack (LIFO). DEFAULT.
 - (queue) Sets the format of the data to a queue (FIFO).
+
+# How Use
+
+## How to compile
+
+$ gcc -Wall -Werror -Wextra -pedantic *.c -o monty
+
+### Requirements
+
+ - compile on Ubuntu 14.04 LTS
+ - compile with gcc 4.8.4
+
+### Examples
+```bash
+$ cat -e bytecodes/00.m
+push 1$
+push 2$
+push 3$
+pall$
+$ ./monty bytecodes/00.m
+3
+2
+1
+$
+```
