@@ -8,8 +8,7 @@ This project was built by Hugo Bayona and Alejo López
 1. [Authors](#Authors)
 2. [Features](#Features)
 3. [How Use](#How-Use)
-3. [Tasks](#Tasks)
-4. [General Test Cases](#general-Test-Cases)
+3. [Brainfuck](#Brainfuck)
 
 # Authors
  👤 **Hugo Bayona**
@@ -64,3 +63,13 @@ $ ./monty bytecodes/00.m
 1
 $
 ```
+# Brainfuck
+
+Brainfuck is an esoteric programming language created in 1993 by Urban Müller, and is notable for its extreme minimalism.
+
+This repository includes 4 files with Brainfuck implementations.
+
+- A Brainf*ck script that prints Holberton, followed by a new line.
+- Add two digits given by the user.
+- Multiply two digits given by the user.
+- Multiply two digits given by the user + print a new line at the end.
